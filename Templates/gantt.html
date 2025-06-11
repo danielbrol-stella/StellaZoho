@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico de Gantt</title>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #gantt-chart {
+            width: 100%;
+            height: 600px;
+        }
+        .chart-container {
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+        .error-message {
+            color: #d32f2f;
+            padding: 20px;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart-container">
+        <h1>Gráfico de Gantt</h1>
+        <div id="gantt-chart"></div>
+        <div id="error-message" class="error-message"></div>
+    </div>
+
+    <script>
+        // Carrega a biblioteca de gráficos
+        google.charts.load('current', {'packages':['gantt']});
+        
+        // Define a função de callback quando a biblioteca estiver carregada
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            try {
+                // Cria o objeto de dados
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'ID');
+                data.addColumn('string', 'Nome da Tarefa');
+                data.addColumn('string', 'Recurso');
+                data.addColumn('date', 'Data Início');
+                data.addColumn('date', 'Data Fim');
+                data.addColumn('number', 'Duração');
+                data.addColumn('number', 'Percentual Completo');
+                data.addColumn('string', 'Dependências');
+
+                // Processa os dados do Flask
+                const projetos = {{ dados_gantt.projetos|tojson|safe }};
+                const tarefas = {{ dados_gantt.tarefas|tojson|safe }};
+
+                // Adiciona linhas ao DataTable
+                projetos.forEach(projeto => {
+                    data.addRow([
+                        projeto.id,
+                        projeto.name,
+                        null,
+                        parseDate(projeto.start),
+                        parseDate(projeto.end),
+                        null,
+                        projeto.progress,
+                        null
+                    ]);
+                });
+
+                tarefas.forEach(tarefa => {
+                    data.addRow([
+                        tarefa.id,
+                        tarefa.name,
+                        tarefa.parent,
+                        parseDate(tarefa.start),
+                        parseDate(tarefa.end),
+                        null,
+                        tarefa.progress,
+                        tarefa.parent
+                    ]);
+                });
+
+                // Configurações do gráfico
+                var options = {
+                    height: data.getNumberOfRows() * 40 + 100,
+                    gantt: {
+                        trackHeight: 40,
+                        percentEnabled: true,
+                        criticalPathEnabled: true,
+                        criticalPathStyle: {
+                            stroke: '#e64a19',
+                            strokeWidth: 2
+                        }
+                    }
+                };
+
+                // Cria e desenha o gráfico
+                var chart = new google.visualization.Gantt(document.getElementById('gantt-chart'));
+                chart.draw(data, options);
+
+            } catch (error) {
+                console.error('Erro ao desenhar gráfico:', error);
+                showError('Erro ao carregar o gráfico. Verifique o console para detalhes.');
+            }
+        }
+
+        function parseDate(dateString) {
+            if (!dateString) return new Date(); // Data atual como fallback
+            try {
+                const parts = dateString.split('-');
+                return new Date(parts[0], parts[1]-1, parts[2]);
+            } catch (e) {
+                console.warn('Data inválida:', dateString);
+                return new Date(); // Data atual como fallback
+            }
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        // Redesenha o gráfico quando a janela é redimensionada
+        window.addEventListener('resize', function() {
+            if (typeof drawChart === 'function') {
+                drawChart();
+            }
+        });
+    </script>
+</body>
+</html>
