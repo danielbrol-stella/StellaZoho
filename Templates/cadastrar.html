@@ -84,43 +84,45 @@
             </div>
             </fieldset>
             
-            <div class="row">
-                <!-- Campo de Nome da Atividade -->
-                <div class="col-sm-5 mb-3">
-                    <label for="nome_atividade" class="form-label">Nome da Atividade:</label>
-                    <input type="text" id="nome_atividade" name="nome_atividade" class="form-control" required>
-                </div>
+            <div id="containerLinhas">
+                <div class="row" id="linhaModelo">
+                    <!-- Campo de Nome da Atividade -->
+                    <div class="col-sm-5 mb-3">
+                        <label for="nome_atividade" class="form-label">Nome da Atividade:</label>
+                        <input type="text" id="nome_atividade" name="nome_atividade" class="form-control" required>
+                    </div>
 
-                <!-- Combo de Atividades Início -->
-                <div class="col-sm-3 mb-3">
-                    <label for="atividade_inicio" class="form-label">Atividade Início:</label>
-                    <select id="atividade_inicio" name="atividade_id_inicio" class="form-select" required>
-                        <option value="">Selecione uma atividade</option>
-                    </select>
-                </div>
+                    <!-- Combo de Atividades Início -->
+                    <div class="col-sm-3 mb-3">
+                        <label for="atividade_inicio" class="form-label">Atividade Início:</label>
+                        <select id="atividade_inicio" name="atividade_id_inicio" class="form-select" required>
+                            <option value="">Selecione uma atividade</option>
+                        </select>
+                    </div>
 
-                <!-- Combo de Atividades Fim -->
-                <div class="col-sm-3 mb-3">
-                    <label for="atividade_fim" class="form-label">Atividade Fim:</label>
-                    <select id="atividade_fim" name="atividade_id_fim" class="form-select" required>
-                        <option value="">Selecione uma atividade</option>
-                    </select>
-                </div>
+                    <!-- Combo de Atividades Fim -->
+                    <div class="col-sm-3 mb-3">
+                        <label for="atividade_fim" class="form-label">Atividade Fim:</label>
+                        <select id="atividade_fim" name="atividade_id_fim" class="form-select" required>
+                            <option value="">Selecione uma atividade</option>
+                        </select>
+                    </div>
 
-                <!-- Botão para gerar nova linha -->
-                <div class="col-sm-1">
+                    <!-- Botão para gerar nova linha -->
                     <div class="col-sm-1">
-                        <button type="button" id="btnAdicionarLinha" class="btn bg-color text-light mt-4 stella-btn">
-                            &plus;
-                        </button>
+                        <div class="col-sm-1">
+                            <button type="button" id="btnAdicionarLinha" class="btn bg-color text-light mt-4 stella-btn">
+                                &plus;
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-12 d-flex gap-2">
-                    <button type="submit" class="btn bg-color text-light stella-btn">Cadastrar</button>
-                    <!--<button type="button" id="btnVisualizarGantt" class="btn btn-secondary">Visualizar Gantt</button>-->
+                
+                <div class="row">
+                    <div class="col-12 d-flex gap-2">
+                        <button type="submit" class="btn bg-color text-light stella-btn">Cadastrar</button>
+                        <!--<button type="button" id="btnVisualizarGantt" class="btn btn-secondary">Visualizar Gantt</button>-->
+                    </div>
                 </div>
             </div>
         </form>
@@ -165,5 +167,6 @@
             });
         });
     </script>
+    <script src="./index.js"></script>
 </body>
 </html>
