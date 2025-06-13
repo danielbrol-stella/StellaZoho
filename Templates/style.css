@@ -1,0 +1,64 @@
+.bg-color{
+    background: rgb(0, 174, 199);
+}
+.stella-logo{
+    width: 45px;
+}
+.hero-section {
+    color: white;
+    border-radius: 15px;
+    padding: 3rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.btn-custom {
+    min-width: 200px;
+    margin: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.btn-primary-custom {
+    background-color: #4a6cf7;
+    border-color: #4a6cf7;
+}
+.btn-primary-custom:hover {
+    background-color: #3a5ce4;
+    border-color: #3a5ce4;
+    transform: translateY(-2px);
+}
+.btn-secondary-custom {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+.btn-secondary-custom:hover {
+    background-color: #5a6268;
+    border-color: #5a6268;
+    transform: translateY(-2px);
+}
+.btn-info-custom {
+    background-color: #0dcaf0;
+    border-color: #0dcaf0;
+}
+.btn-info-custom:hover {
+    background-color: #0bb4d4;
+    border-color: #0bb4d4;
+    transform: translateY(-2px);
+}
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #4a6cf7;
+}
+.feature-card {
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    height: 100%;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}

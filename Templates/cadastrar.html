@@ -4,45 +4,123 @@
     <meta charset="UTF-8">
     <title>Cadastrar Atividade</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="container mt-4">
-        <h1>Cadastro de Atividade</h1>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary bg-color">
+            <div class="container-fluid">
+                <img src="../images/Logo E de Stella branco.png" alt="Logo da Stella" class="navbar-brand stella-logo">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="navbar-nav text">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="./index.html">Central de projetos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="./cadastrar.html">Cadastro de tarefas</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Trabalhar responsividade do navbar -->
+    </header>
+
+    <main class="container mt-4">
+        <h3>Cadastro de tarefas</h3>
+
+        <br>
 
         <form method="POST" action="/salvar_atividade">
-            <!-- Combo de Projetos -->
-            <div class="mb-3">
-                <label for="projeto" class="form-label">Projeto:</label>
-                <select id="projeto" name="projeto_id" class="form-select" required>
-                    <option value="">Selecione um projeto</option>
-                    {% for projeto in projetos %}
-                        <option value="{{ projeto.projeto_id }}">{{ projeto.nome_projeto }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+            <fieldset class="border p-3 mb-4">
+                <legend>Informações do Projeto</legend>
 
-            <!-- Combo de Atividades Início -->
-            <div class="mb-3">
-                <label for="atividade_inicio" class="form-label">Atividade Início:</label>
-                <select id="atividade_inicio" name="atividade_id_inicio" class="form-select" required>
-                    <option value="">Selecione uma atividade</option>
-                </select>
-            </div>
+                <div class="row">
+                <!-- Combo de Áreas -->
+                <div class="col-sm-3 mb-3">
+                    <label for="area" class="form-label">Área:</label>
+                    <select id="area" name="area_id" class="form-select" required>
+                        <option value="">Selecione uma área</option>
+                        {% for area in areas %}
+                            <option value="{{ area.area_id }}">{{ area.nome_area }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <!-- Combo de Famílias --> 
+                <div class="col-sm-3 mb-3">
+                    <label for="familia" class="form-label">Família:</label>
+                    <select id="familia" name="familia_id" class="form-select" required>
+                        <option value="">Selecione uma família</option>
+                        {% for familia in familias %}
+                            <option value="{{ familia.familia_id }}">{{ familia.nome_familia }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
 
-            <!-- Combo de Atividades Fim -->
-            <div class="mb-3">
-                <label for="atividade_fim" class="form-label">Atividade Fim:</label>
-                <select id="atividade_fim" name="atividade_id_fim" class="form-select" required>
-                    <option value="">Selecione uma atividade</option>
-                </select>
-            </div>
+                <!-- Combo de Projetos -->
+                <div class="col-sm-3 mb-3">
+                    <label for="projeto" class="form-label">Projeto:</label>
+                    <select id="projeto" name="projeto_id" class="form-select" required>
+                        <option value="">Selecione um projeto</option>
+                        {% for projeto in projetos %}
+                            <option value="{{ projeto.projeto_id }}">{{ projeto.nome_projeto }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
 
-            <div class="d-flex gap-2">
-                <button type="submit" class="btn btn-primary">Salvar</button>
-               <!--<button type="button" id="btnVisualizarGantt" class="btn btn-secondary">Visualizar Gantt</button>-->
+                <!-- Combo de Blocos -->
+                <div class="col-sm-3 mb-3">
+                    <label for="bloco" class="form-label">Bloco:</label>
+                    <select id="bloco" name="bloco_id" class="form-select" required>
+                        <option value="">Selecione um bloco</option>
+                        {% for bloco in blocos %}
+                            <option value="{{ bloco.bloco_id }}">{{ bloco.nome_bloco }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            </fieldset>
+            
+            <div class="row">
+                <!-- Campo de Nome da Atividade -->
+                <div class="col-sm-5 mb-3">
+                    <label for="nome_atividade" class="form-label">Nome da Atividade:</label>
+                    <input type="text" id="nome_atividade" name="nome_atividade" class="form-control" required>
+                </div>
+
+                <!-- Combo de Atividades Início -->
+                <div class="col-sm-3 mb-3">
+                    <label for="atividade_inicio" class="form-label">Atividade Início:</label>
+                    <select id="atividade_inicio" name="atividade_id_inicio" class="form-select" required>
+                        <option value="">Selecione uma atividade</option>
+                    </select>
+                </div>
+
+                <!-- Combo de Atividades Fim -->
+                <div class="col-sm-3 mb-3">
+                    <label for="atividade_fim" class="form-label">Atividade Fim:</label>
+                    <select id="atividade_fim" name="atividade_id_fim" class="form-select" required>
+                        <option value="">Selecione uma atividade</option>
+                    </select>
+                </div>
+
+                <!-- Botão para gerar nova linha -->
+                <div class="col-sm-1">
+                    <button type="button" id="btnAdicionarLinha" class="btn btn-secondary mt-4">&plus;</button>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12 d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    <!--<button type="button" id="btnVisualizarGantt" class="btn btn-secondary">Visualizar Gantt</button>-->
+                </div>
             </div>
         </form>
-    </div>
+    </main>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
