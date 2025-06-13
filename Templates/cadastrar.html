@@ -10,21 +10,28 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary bg-color">
             <div class="container-fluid">
-                <img src="../images/Logo E de Stella branco.png" alt="Logo da Stella" class="navbar-brand stella-logo">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <div class="navbar-nav text">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link text-light" href="./index.html">Central de projetos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light" href="./cadastrar.html">Cadastro de tarefas</a>
-                            </li>
-                        </ul>
-                    </div>
+                <a class="navbar-brand" href="#"> <!-- Mudança: transforme a imagem em um link -->
+                    <img src="../images/Logo E de Stella branco.png" alt="Logo da Stella" class="stella-logo">
+                </a>
+                
+                <!-- Mudança: botão de colapso para telas pequenas -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav"> <!-- Mudança: colapso da navbar -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="./index.html">Central de projetos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="./cadastrar.html">Cadastro de tarefas</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
+        
         <!-- Trabalhar responsividade do navbar -->
     </header>
 
@@ -131,6 +138,7 @@
     </main>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         $(document).ready(function() {
             // Carregar atividades quando projeto é selecionado
