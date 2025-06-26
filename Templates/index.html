@@ -11,88 +11,51 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary bg-color">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"> <!-- Mudança: transforme a imagem em um link -->
+                <a class="navbar-brand" href="#">
                     <img src="../images/Logo E de Stella branco.png" alt="Logo da Stella" class="stella-logo">
                 </a>
                 
-                <!-- Mudança: botão de colapso para telas pequenas -->
+                <!-- Botão de colapso para telas pequenas -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 
-                <div class="collapse navbar-collapse" id="navbarNav"> <!-- Mudança: colapso da navbar -->
+                <!-- Colapso da navbar -->
+                <div class="collapse navbar-collapse" id="navbarNav"> 
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="./index.html">Central de projetos</a>
+                            <a class="nav-link text-light" href="./index.html">
+                                Central de projetos
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="./cadastrar.html">Cadastro de tarefas</a>
+                            <a class="nav-link text-light" href="./cadastrar.html">
+                                Cadastro de tarefas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url_for('login') }}" class="nav-link text-light">
+                                Conectar com Zoho
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url_for('grid_atividades') }}" class="nav-link text-light">
+                                Últimas Atividades
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url_for('cadastrar') }}" class="nav-link text-light">
+                                Cadastrar
+                            </a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-
-        <div class="container py-5">
-            <!-- Seção Hero -->
-            <div class="hero-section bg-color text-center">
-                <h1 class="display-4 fw-bold mb-4">Integração Stella/Engenharia - Zoho Projects</h1>
-                <!--<p class="lead fs-4 mb-5">Gerencie seus projetos e visualize cronogramas de forma intuitiva</p>-->
-                <div class="d-flex justify-content-center flex-wrap">
-                    <a href="{{ url_for('login') }}" class="btn btn-primary btn-custom btn-primary-custom">
-                        <i class="bi bi-link-45deg"></i> Conectar com Zoho
-                    </a>
-                    <!--
-                    <a href="{{ url_for('gantt') }}" class="btn btn-secondary btn-custom btn-secondary-custom">
-                        <i class="bi bi-bar-chart-line"></i> Visualizar Gantt
-                    </a>
-                    -->
-                    <a href="{{ url_for('grid_atividades') }}" class="btn btn-success btn-custom">
-                        <i class="bi bi-grid"></i> Últimas Atividades
-                    </a>
-                    <a href="{{ url_for('cadastrar') }}" class="btn btn-info btn-custom btn-info-custom">
-                        <i class="bi bi-person-plus"></i> Cadastrar
-                    </a>
-                </div>
-            </div>
-
-            <!-- Seção de Recursos -->
-            <!--
-            <div class="row g-4 py-5">
-                <div class="col-md-4">
-                    <div class="feature-card text-center">
-                        <div class="feature-icon">
-                            <i class="bi bi-arrow-repeat"></i>
-                        </div>
-                        <h3>Sincronização Automática</h3>
-                        <p>Mantenha seus projetos e tarefas sempre atualizados com o Zoho Projects.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="feature-card text-center">
-                        <div class="feature-icon">
-                            <i class="bi bi-calendar-range"></i>
-                        </div>
-                        <h3>Gráficos Gantt</h3>
-                        <p>Visualize o cronograma completo de seus projetos de forma clara e intuitiva.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature-card text-center">
-                        <div class="feature-icon">
-                            <i class="bi bi-card-checklist"></i>
-                        </div>
-                        <h3>Gestão de Atividades</h3>
-                        <p>Acompanhe as últimas atividades cadastradas e seus prazos.</p>
-                    </div>
-                </div>
-            </div>-->
-        </div>   
     </header>
 
     <main>
-        <div class="container">
+        <div class="container pt-5">
             <div class="row">
                 <div class="col-sm-12 col-md-9">
                     <h3><b>Central de projetos</b></h3>
@@ -158,13 +121,13 @@
 
                                 <div class="col-sm-3 pt-4 pb-4">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkDefault">
-                                        <label class="form-check-label" for="checkDefault">
+                                        <input class="form-check-input" type="checkbox" checked>
+                                        <label class="form-check-label" for="checkChecked">
                                             Atividades para projeto
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkChecked" checked>
+                                        <input class="form-check-input" type="checkbox" checked>
                                         <label class="form-check-label" for="checkChecked">
                                             Bloco para projeto
                                         </label>
